@@ -25,7 +25,9 @@ typedef NS_ENUM(NSInteger, MJRefreshState) {
     /** 即将刷新的状态 */
     MJRefreshStateWillRefresh,
     /** 所有数据加载完毕，没有更多的数据了 */
-    MJRefreshStateNoMoreData
+    MJRefreshStateNoMoreData,
+    /** 刷新成功状态 */
+    MJRefreshStateRefreshSucceed
 };
 
 /** 进入刷新状态的回调 */
@@ -67,6 +69,10 @@ typedef void (^MJRefreshComponentEndRefreshingCompletionBlock)();
 /** 结束刷新状态 */
 - (void)endRefreshing;
 - (void)endRefreshingWithCompletionBlock:(void (^)())completionBlock;
+
+/** 结束刷新状态 */
+- (void)doneAndEndRefresh;
+
 /** 是否正在刷新 */
 - (BOOL)isRefreshing;
 /** 刷新状态 一般交给子类内部实现 */

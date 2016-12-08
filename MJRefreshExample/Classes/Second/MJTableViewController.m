@@ -21,6 +21,8 @@
 #import "MJDIYAutoFooter.h"
 #import "MJDIYBackFooter.h"
 
+#import "CustomDoneAndEndHeader.h"
+
 static const CGFloat MJDuration = 2.0;
 /**
  * 随机数据
@@ -35,6 +37,19 @@ static const CGFloat MJDuration = 2.0;
 @implementation MJTableViewController
 #pragma mark - 示例代码
 #pragma mark UITableView + 下拉刷新 默认
+
+- (void)custom01 {
+    __weak __typeof(self) weakSelf = self;
+    
+    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
+    self.tableView.mj_header = [CustomDoneAndEndHeader headerWithRefreshingBlock:^{
+        [weakSelf loadNewDataWithDoneStatus];
+    }];
+    
+    // 马上进入刷新状态
+    [self.tableView.mj_header beginRefreshing];
+}
+
 - (void)example01
 {
     __weak __typeof(self) weakSelf = self;
@@ -295,6 +310,24 @@ static const CGFloat MJDuration = 2.0;
         
         // 拿到当前的下拉刷新控件，结束刷新状态
         [tableView.mj_header endRefreshing];
+    });
+}
+
+- (void)loadNewDataWithDoneStatus
+{
+    // 1.添加假数据
+    for (int i = 0; i<5; i++) {
+        [self.data insertObject:MJRandomData atIndex:0];
+    }
+    
+    // 2.模拟2秒后刷新表格UI（真实开发中，可以移除这段gcd代码）
+    __weak UITableView *tableView = self.tableView;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MJDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 刷新表格
+        [tableView reloadData];
+        
+        // 拿到当前的下拉刷新控件，结束刷新状态
+        [tableView.mj_header doneAndEndRefresh];
     });
 }
 

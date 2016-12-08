@@ -52,6 +52,7 @@
 		2DB2EA271BECBE6700D58F6A /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB2EA121BECBE6700D58F6A /* UIScrollView+MJExtension.m */; };
 		2DB2EA281BECBE6700D58F6A /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB2EA141BECBE6700D58F6A /* UIScrollView+MJRefresh.m */; };
 		2DB2EA291BECBE6700D58F6A /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB2EA161BECBE6700D58F6A /* UIView+MJExtension.m */; };
+		E37A99A71DF93C360061BD34 /* CustomDoneAndEndHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E37A99A61DF93C360061BD34 /* CustomDoneAndEndHeader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +154,8 @@
 		2DB2EA141BECBE6700D58F6A /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		2DB2EA151BECBE6700D58F6A /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		2DB2EA161BECBE6700D58F6A /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		E37A99A51DF93C360061BD34 /* CustomDoneAndEndHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDoneAndEndHeader.h; sourceTree = "<group>"; };
+		E37A99A61DF93C360061BD34 /* CustomDoneAndEndHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDoneAndEndHeader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +200,8 @@
 				2D9BEAEB1BB15F4A00AED473 /* MJDIYBackFooter.m */,
 				2D9BEAEC1BB15F4A00AED473 /* MJDIYHeader.h */,
 				2D9BEAED1BB15F4A00AED473 /* MJDIYHeader.m */,
+				E37A99A51DF93C360061BD34 /* CustomDoneAndEndHeader.h */,
+				E37A99A61DF93C360061BD34 /* CustomDoneAndEndHeader.m */,
 			);
 			path = DIY;
 			sourceTree = "<group>";
@@ -551,6 +556,7 @@
 				2DB2EA211BECBE6700D58F6A /* MJRefreshBackStateFooter.m in Sources */,
 				2DB2EA281BECBE6700D58F6A /* UIScrollView+MJRefresh.m in Sources */,
 				2D9BEB151BB15F4A00AED473 /* MJTempViewController.m in Sources */,
+				E37A99A71DF93C360061BD34 /* CustomDoneAndEndHeader.m in Sources */,
 				2D9BEB171BB15F4A00AED473 /* MJCollectionViewController.m in Sources */,
 				2D9BEB0B1BB15F4A00AED473 /* MJChiBaoZiFooter2.m in Sources */,
 			);

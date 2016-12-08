@@ -103,7 +103,29 @@
     MJRefreshCheckState
     
     // 根据状态做事情
-    if (state == MJRefreshStateIdle) {
+    if (state == MJRefreshStateRefreshSucceed) {
+        if (oldState != MJRefreshStateRefreshing) return;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // 保存刷新时间
+            [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:self.lastUpdatedTimeKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            // 恢复inset和offset
+            [UIView animateWithDuration:MJRefreshSlowAnimationDuration animations:^{
+                self.scrollView.mj_insetT += self.insetTDelta;
+                
+                // 自动调整透明度
+                if (self.isAutomaticallyChangeAlpha) self.alpha = 0.0;
+            } completion:^(BOOL finished) {
+                self.pullingPercent = 0.0;
+                self.state = MJRefreshStateIdle;
+                if (self.endRefreshingCompletionBlock) {
+                    self.endRefreshingCompletionBlock();
+                }
+            }];
+        });
+    } else if (state == MJRefreshStateIdle) {
         if (oldState != MJRefreshStateRefreshing) return;
         
         // 保存刷新时间
@@ -144,6 +166,15 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         self.state = MJRefreshStateIdle;
     });
+}
+
+- (void)doneAndEndRefresh
+{
+    if (self.state != MJRefreshStateIdle) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.state = MJRefreshStateRefreshSucceed;
+        });
+    }
 }
 
 - (NSDate *)lastUpdatedTime

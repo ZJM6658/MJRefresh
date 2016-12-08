@@ -112,9 +112,9 @@
 - (void)setState:(MJRefreshState)state
 {
     MJRefreshCheckState
-    
+
     // 根据状态做事情
-    if (state == MJRefreshStatePulling || state == MJRefreshStateRefreshing) {
+    if (state == MJRefreshStatePulling || state == MJRefreshStateRefreshing || state == MJRefreshStateRefreshSucceed) {
         NSArray *images = self.stateImages[@(state)];
         if (images.count == 0) return;
         

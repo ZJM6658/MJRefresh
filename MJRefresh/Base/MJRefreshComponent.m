@@ -174,6 +174,13 @@
     self.state = MJRefreshStateIdle;
 }
 
+- (void)doneAndEndRefresh
+{
+    if (self.state != MJRefreshStateIdle) {
+        self.state = MJRefreshStateRefreshSucceed;
+    }
+}
+
 - (void)endRefreshingWithCompletionBlock:(void (^)())completionBlock
 {
     self.endRefreshingCompletionBlock = completionBlock;
